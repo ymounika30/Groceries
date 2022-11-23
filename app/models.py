@@ -70,3 +70,19 @@ class Account(AbstractBaseUser):
         self.is_admin
     def has_module_perms(self,add_label):
         return True
+    
+class Product(models.Model):
+    productname=models.CharField(max_length=100,unique=True)
+    slug=models.SlugField(max_length=100,unique=True)
+    description=models.TextField()
+    price=models.IntegerField()
+    images=models.ImageField(upload_to='photos/products')
+    stock=models.IntegerField()
+    is_available=models.BooleanField(default=True)
+    category=models.ForeignKey(Category, on_delete=models.CASCADE)
+    created_date=models.DateTimeField(auto_add_now=True)
+    modified_date=models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        self.productname
+    
