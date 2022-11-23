@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body style="background-color: #E83F5E; text-align: center;">
+        <div style="font-family:Serif;font-weight:bold;padding:10px;">
+            <h1>Login</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for fm in form %}
+                    <p> {{fm.label}} {{fm}} {{fm.error|striptags}} </p>
+                {% endfor %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p> {{error}}</p>
+                    {% endfor %}
+                {% endif %}
+                <input type="submit" value="Login">
+            </form>
+            <a href="{% url 'register' %}">Signup</a>
+        </div>
+    </body>
+</html>
+
+{% endblock %}
