@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from . models import Category,Account,Product
+from . models import Category,Account,Items
 # Register your models here.
 
 # admin.site.register(Category)
@@ -23,7 +23,7 @@ class Category(admin.ModelAdmin):
 class Account(admin.ModelAdmin):
     include="__all__"
     
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug':('productname',)}
-    list_dispalay=('productname','price','stock','modified_date','is_available')
+@admin.register(Items)
+class ItemAdmin(admin.ModelAdmin):
+    prepopulated_fields={'slug':('itemname',)}
+    list_dispalay=('itemname','price','stock','modified_date','is_available')

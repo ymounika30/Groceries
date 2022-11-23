@@ -71,8 +71,8 @@ class Account(AbstractBaseUser):
     def has_module_perms(self,add_label):
         return True
     
-class Product(models.Model):
-    productname=models.CharField(max_length=100,unique=True)
+class Items(models.Model):
+    itemname=models.CharField(max_length=100,unique=True)
     slug=models.SlugField(max_length=100,unique=True)
     description=models.TextField()
     price=models.IntegerField()
@@ -80,9 +80,9 @@ class Product(models.Model):
     stock=models.IntegerField()
     is_available=models.BooleanField(default=True)
     category=models.ForeignKey(Category, on_delete=models.CASCADE)
-    created_date=models.DateTimeField(auto_add_now=True)
+    created_date=models.DateTimeField(auto_now_add=True)
     modified_date=models.DateTimeField(auto_now=True)
     
-    def __str__(self):
-        self.productname
+    # def __str__(self):
+    #     self.itemname
     
