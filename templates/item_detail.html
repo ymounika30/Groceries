@@ -23,14 +23,14 @@
 <h2 class="title">{{single_item.itemname}}s</h2>
 
 <div class="mb-3"> 
-	<var class="price h4">{{single_item.price}}</var> 
+	<var class="price h4">${{single_item.price}}</var> 
 </div> 
 
 <p>{{single_item.description}}</p>
 
 
 <hr>
-	<div class="row">
+	{% comment %} <div class="row">
 		<div class="item-option-select">
 			<h6>Choose Color</h6>
 			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
@@ -48,8 +48,8 @@
 			  </label>
 			</div> 
 		</div>
-	</div> <!-- row.// -->
-	<div class="row">
+	</div> <!-- row.// --> {% endcomment %}
+	{% comment %} <div class="row">
 		<div class="item-option-select">
 			<h6>Select Size</h6>
 			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
@@ -67,9 +67,13 @@
 			  </label>
 			</div> 
 		</div>
-	</div> <!-- row.// -->
+	</div> <!-- row.// --> {% endcomment %}
 	<hr>
-	<a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+	{% if single_item.stock <= 0 %}
+		<h5 class="text-danger">Out of Stock</h5>
+	{% else %}
+		<a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+	{% endif %}
 </article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
 	</div> <!-- row.// -->
